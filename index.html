@@ -2,8 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>Nullborn</title>
+		<title>KAYOS Nullborn — Playable Slices</title>
 		<style>
 html, body, #canvas {
 	margin: 0;
@@ -93,8 +92,66 @@ body {
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
 
+	
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="theme-color" content="#0E1109">
+	<meta name="description" content="Two playable slices of KAYOS: Nullborn - Festival Town and the Stonemaw clan-hold.">
+	<style>
+		/* The canvas is the game; nothing on this page should ever scroll or
+		   bounce, because a drag is a look-around and iOS will happily treat the
+		   same gesture as a page pull. */
+		html, body {
+			width: 100%;
+			height: 100%;
+			overscroll-behavior: none;
+			background: #0E1109;
+		}
+		#canvas {
+			width: 100%;
+			height: 100%;
+			/* Keep the picture out from under the notch and the home indicator. */
+			padding: env(safe-area-inset-top) env(safe-area-inset-right)
+			         env(safe-area-inset-bottom) env(safe-area-inset-left);
+			box-sizing: border-box;
+		}
+		/* Portrait hint. Landscape is not enforced -- the browser has no way to
+		   lock orientation from a plain page -- so the honest thing is to ask. */
+		#rotate {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 9000;
+			background: #0E1109;
+			color: #EDEFE2;
+			font: 500 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+			text-align: center;
+			padding: 0 34px;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			gap: 14px;
+		}
+		#rotate b {
+			font-size: 21px;
+			font-weight: 600;
+			letter-spacing: -.01em;
+		}
+		#rotate span { color: #97A08C; font-size: 15px; }
+		@media (orientation: portrait) and (max-width: 900px) {
+			#rotate { display: flex; }
+		}
+	</style>
 	</head>
 	<body>
+	<div id="rotate">
+		<b>Turn your phone sideways</b>
+		<span>KAYOS is a landscape game. Rotate to play &mdash; and if your
+		screen does not turn, check the rotation lock in Control Centre.</span>
+	</div>
+
 		<canvas id="canvas">
 			Your browser does not support the canvas tag.
 		</canvas>
@@ -111,7 +168,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":6745640,"index.wasm":39509339},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13730820,"index.wasm":39509339},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
